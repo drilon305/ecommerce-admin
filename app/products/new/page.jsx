@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Layout from '../../../components/Layout'
 import axios from 'axios'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 
 export default function NewProduct() {
@@ -10,7 +10,8 @@ export default function NewProduct() {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [goToProducts, setGoToProducts] = useState(false)
-    const router = useRouter();
+    const router = useRouter()
+
 
     async function createProduct(e) {
         e.preventDefault()
@@ -19,10 +20,12 @@ export default function NewProduct() {
     setGoToProducts(true)
     }
 
-    if(goToProducts) {
-       router.push('/products')
+    if (goToProducts) {
+      router.push('/products')
     }
 
+
+    
   return (
     <Layout>
         <form onSubmit={createProduct}>
